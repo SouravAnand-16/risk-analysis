@@ -3,6 +3,7 @@
     "source_address": "1HQ3Go3ggs8pFnXuHVHRytPCq5fGG8Hbhx",
     "risk_score": "89%",
     "risk": "Highly Risky",
+    "date": "2025-02-10",
     "level_vise_risk_analysis": [
       {
         "level": 1,
@@ -26,6 +27,7 @@
     "source_address": "Go3ggs8pFnXuHVHRytPCq5fGG8Hbhx",
     "risk_score": "18%",
     "risk": "Low Risky",
+    "date": "2025-02-11",
     "level_vise_risk_analysis": [
       {
         "level": 1,
@@ -39,6 +41,30 @@
         "level": 2,
         "risk_percentage": "20%",
         "risky_entities_count": 2,
+        "non_risky_entities_count": 2,
+        "total_coinjoin": 1,
+        "total_flagged": 1
+      }
+    ]
+  },
+  {
+    "source_address": "3H2A3Go8pFnXuHVHRytPCq5fGG8Hbhx",
+    "risk_score": "65%",
+    "risk": "Moderate Risky",
+    "date": "2025-02-12",
+    "level_vise_risk_analysis": [
+      {
+        "level": 1,
+        "risk_percentage": "60%",
+        "risky_entities_count": 4,
+        "non_risky_entities_count": 2,
+        "total_coinjoin": 3,
+        "total_flagged": 2
+      },
+      {
+        "level": 2,
+        "risk_percentage": "50%",
+        "risky_entities_count": 3,
         "non_risky_entities_count": 2,
         "total_coinjoin": 1,
         "total_flagged": 1
