@@ -1,53 +1,19 @@
-// import { useState } from "react";
-// import { useDispatch, useSelector } from "react-redux";
-// import { setRiskData } from "../redux/riskSlice";
-// import riskDataJSON from "../assets/riskData.json";
-// import RiskAnalysis2 from "../components/PieChartAnimated";
-// import "../styles/Home.css";
-
-// const Home = () => {
-//   const [address, setAddress] = useState("");
-//   const dispatch = useDispatch();
-//   const riskData = useSelector((state) => state.risk.data);
-
-//   const handleSearch = () => {
-//     const result = riskDataJSON.find((item) => item.source_address === address);
-//     dispatch(setRiskData(result || null));
-//   };
-
-//   return (
-//     <div className="home-container">
-//       {!riskData ? (
-//         <>
-//           <h1 className="title">Risk Analysis</h1>
-//           <input
-//             type="text"
-//             placeholder="Enter Address..."
-//             value={address}
-//             onChange={(e) => setAddress(e.target.value)}
-//             className="input-box"
-//           />
-//           <button onClick={handleSearch} className="search-button">
-//             Search
-//           </button>
-//         </>
-//       ) : (
-//         <RiskAnalysis2 />
-//       )}
-//     </div>
-//   );
-// };
-
-// export default Home;
-
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setRiskData } from "../redux/riskSlice";
 import riskDataJSON from "../assets/riskData.json";
 import RiskAnalysis2 from "../components/PieChartAnimated";
 import { Button, TextField, Card, CardContent, Typography } from "@mui/material";
-import { motion } from "framer-motion";
+import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
 import "../styles/Home.css";
+
+const dummyTrends = [
+  { day: "Mon", risk: 30 },
+  { day: "Tue", risk: 45 },
+  { day: "Wed", risk: 50 },
+  { day: "Thu", risk: 70 },
+  { day: "Fri", risk: 85 },
+];
 
 const Home = () => {
   const [address, setAddress] = useState("");
@@ -57,115 +23,98 @@ const Home = () => {
 
   const handleSearch = () => {
     if (!address.trim()) return;
-    
     const result = riskDataJSON.find((item) => item.source_address === address);
     dispatch(setRiskData(result || null));
-
-    setRecentSearches((prev) => {
-      const updatedSearches = [address, ...prev.filter((a) => a !== address)];
-      return updatedSearches.slice(0, 5);
-    });
+    setRecentSearches((prev) => [address, ...prev.slice(0, 4)]);
   };
 
-  const handleRandomSearch = () => {
-    const randomAddress = riskDataJSON[Math.floor(Math.random() * riskDataJSON.length)].source_address;
-    setAddress(randomAddress);
+  const handleRecentSearch = (addr) => {
+    setAddress(addr);
     handleSearch();
   };
 
+  const getRandomAddress = () => {
+    const randomIndex = Math.floor(Math.random() * riskDataJSON.length);
+    setAddress(riskDataJSON[randomIndex].source_address);
+  };
+
   return (
-    <motion.div 
-      className="home-container"
-      initial={{ opacity: 0, y: -10 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
-    >
+    <div className="home-container">
       {!riskData ? (
         <>
-          <motion.h1 
-            className="title"
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            Risk Analysis System
-          </motion.h1>
+          <Typography variant="h4" className="title">
+            Risk Analysis Portal
+          </Typography>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            <TextField
-              label="Enter Address"
-              variant="outlined"
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-              fullWidth
-              className="input-box"
-            />
-          </motion.div>
+          <TextField
+            variant="outlined"
+            label="Enter Address"
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+            className="input-box"
+          />
 
-          <motion.div
-            className="button-group"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            <Button variant="contained" color="primary" onClick={handleSearch}>
-              Search
-            </Button>
-            <Button variant="outlined" color="secondary" onClick={handleRandomSearch}>
-              Random Address
-            </Button>
-          </motion.div>
+          <Button variant="contained" color="primary" onClick={handleSearch} className="search-button">
+            Search
+          </Button>
 
-          {/* Recent Searches Section */}
+          <Button variant="outlined" color="secondary" onClick={getRandomAddress} className="random-button">
+            Suggest Random Address
+          </Button>
+
           {recentSearches.length > 0 && (
-            <motion.div
-              className="recent-searches"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-            >
+            <div className="recent-searches">
               <Typography variant="h6">Recent Searches:</Typography>
               {recentSearches.map((addr, index) => (
-                <Card 
-                  key={index} 
-                  className="search-card"
-                  onClick={() => {
-                    setAddress(addr);
-                    handleSearch();
-                  }}
-                >
-                  <CardContent>
-                    <Typography>{addr}</Typography>
-                  </CardContent>
-                </Card>
+                <Button key={index} onClick={() => handleRecentSearch(addr)} className="recent-search-button">
+                  {addr}
+                </Button>
               ))}
-            </motion.div>
+            </div>
           )}
 
-          {/* Additional Content */}
-          <motion.div
-            className="info-section"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-          >
-            <Typography variant="h5">Why Risk Analysis Matters?</Typography>
-            <Typography variant="body1">
-              Risk analysis helps identify potential threats and vulnerabilities in an entity’s transactions and network.
-              It provides valuable insights into risk levels, enabling better decision-making.
-            </Typography>
-          </motion.div>
+          <div className="info-section">
+            <Card className="info-card">
+              <CardContent>
+                <Typography variant="h6">What is Risk Analysis?</Typography>
+                <Typography variant="body2">
+                  Risk analysis helps assess the potential threats and vulnerabilities associated with an entity or address.
+                </Typography>
+              </CardContent>
+            </Card>
+            <Card className="trend-analysis">
+            <CardContent>
+              <Typography variant="h6">Risk Trends Over Time</Typography>
+              <ResponsiveContainer width="100%" height={200}>
+                <LineChart data={dummyTrends}>
+                  <XAxis dataKey="day" />
+                  <YAxis />
+                  <Tooltip />
+                  <Line type="monotone" dataKey="risk" stroke="#FF5733" strokeWidth={2} />
+                </LineChart>
+              </ResponsiveContainer>
+            </CardContent>
+          </Card>
+          </div>
+          {/* <Card className="trend-analysis">
+            <CardContent>
+              <Typography variant="h6">Risk Trends Over Time</Typography>
+              <ResponsiveContainer width="100%" height={200}>
+                <LineChart data={dummyTrends}>
+                  <XAxis dataKey="day" />
+                  <YAxis />
+                  <Tooltip />
+                  <Line type="monotone" dataKey="risk" stroke="#FF5733" strokeWidth={2} />
+                </LineChart>
+              </ResponsiveContainer>
+            </CardContent>
+          </Card> */}
         </>
       ) : (
         <RiskAnalysis2 />
       )}
-    </motion.div>
+    </div>
   );
 };
 
 export default Home;
-
