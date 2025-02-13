@@ -1,0 +1,102 @@
+/* Risk Analysis Container */
+.risk-container {
+  max-width: 800px;
+  width: 100%;
+  margin: auto;
+  padding: 20px;
+  background: white;
+  /* box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); */
+  border-radius: 8px;
+  text-align: center;
+  position: relative;
+  min-height: 80vh; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Titles */
+.risk-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.chart-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+/* Chart Containers */
+.chart-container {
+  width: 100%;
+  max-width: 600px;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+/* Back Button */
+.back-button {
+  margin-top: 20px;
+  padding: 10px 15px;
+  background: #d9534f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s ease-in-out;
+  width: 100%;
+  max-width: 200px;
+}
+
+.back-button:hover {
+  background: #c9302c;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .risk-container {
+    width: 95%;
+    padding: 15px;
+    min-height: 85vh; 
+  }
+
+  .chart-container {
+    max-width: 100%;
+    height: 200px;
+  }
+
+  .risk-title {
+    font-size: 22px;
+  }
+
+  .chart-title {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .risk-container {
+    padding: 10px;
+    min-height: 90vh;
+  }
+
+  .risk-title {
+    font-size: 20px;
+  }
+
+  .chart-title {
+    font-size: 14px;
+  }
+
+  .back-button {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+}

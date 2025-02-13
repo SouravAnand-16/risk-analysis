@@ -1,0 +1,72 @@
+.home-container {
+  padding-top: 80px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.input-box {
+  width: 60%;
+  margin-bottom: 15px;
+}
+
+.button-group {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.recent-searches {
+  margin-top: 20px;
+  width: 60%;
+  text-align: left;
+}
+
+.recent-searches h6 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #444;
+}
+
+.search-card {
+  cursor: pointer;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #f8f9fa;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.search-card:hover {
+  transform: scale(1.05);
+  background-color: #e9ecef;
+}
+
+.info-section {
+  max-width: 70%;
+  padding: 20px;
+  background: #f1f1f1;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.info-section h5 {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.info-section p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.5;
+}
