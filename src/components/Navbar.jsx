@@ -1,42 +1,43 @@
-import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import "../styles/Navbar.css";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "../styles/Panel.css";
+import soloLogo from '../assets/images/soloLogo.svg';
+import menuIcon from "../assets/images/menu.svg";
+import closeIcon from "../assets/images/close.svg";
 
 const Navbar = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const navigate = useNavigate();
+
   return (
-    <motion.nav
-      initial={{ y: -50, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className="navbar"
-    >
-      <div className="navbar-container">
-        <Link to="/" className="navbar-logo">
-          Risk<span className="highlight">Analysis</span>
-        </Link>
-
-        <ul className="navbar-links">
-          <li>
-            <Link to="/" className="nav-link">Home</Link>
-          </li>
-          <li>
-            <Link to="/dashboard" className="nav-link">Dashboard</Link>
-          </li>
-          <li>
-            <Link to="/about" className="nav-link">About</Link>
-          </li>
-          <li>
-            <Link to="/contact" className="nav-link">Contact</Link>
-          </li>
-        </ul>
-
-        <Link to="/login" className="login-btn">
-          Login
-        </Link>
-      </div>
-    </motion.nav>
+    <header className="header">
+      <nav id="nav-menu">
+        <div className="logo-cont">
+          <img id="logo-img" src={soloLogo} alt="logo" />
+          <h1>Risk Analysis</h1>
+        </div>
+        <div className="logo-menu" onClick={() => setMenuOpen(true)}>
+          <img className="menu-icon" src={menuIcon} alt="menu" />
+        </div>
+        <div className={`logo-close ${menuOpen ? "" : "hid"}`} onClick={() => setMenuOpen(false)}>
+          <img className="menu-icon" src={closeIcon} alt="close" />
+        </div>
+        <div className={`menu ${menuOpen ? "" : "hid"}`}>
+          <div className="nav-links">
+            <a href="#" className="nav-link home">Home</a>
+            <a href="./pages/about.html" className="nav-link about">About</a>
+            <a href="./pages/services.html" className="nav-link services">Services</a>
+            <a href="./pages/contact.html" className="nav-link contact">Contact</a>
+          </div>
+          <button id="resume-button-1" className="login-signup" onClick={() => navigate("/login")}>
+            Login/Signup
+          </button>
+        </div>
+      </nav>
+    </header>
   );
 };
 
 export default Navbar;
+
 

@@ -2,49 +2,33 @@ import { useState, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setRiskData } from "../redux/riskSlice";
 import riskDataJSON from "../assets/riskData.json";
-import RiskAnalysis2 from "../components/PieChartAnimated";
-import {
-  Button,
-  TextField,
-  Card,
-  CardContent,
-  Typography,
-  Select,
-  MenuItem,
-} from "@mui/material";
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  Tooltip,
-  ResponsiveContainer,
-  BarChart,
-  Bar,
-  Legend,
-} from "recharts";
+import { Typography, TextField, Button, Card, CardContent, Select, MenuItem } from "@mui/material";
+import { ResponsiveContainer, LineChart, Line, XAxis, YAxis, Tooltip, BarChart, Bar, Legend } from "recharts";
+import Navbar from "./Navbar"; 
+import Footer from "./Footer"; 
+import RiskAnalysis2 from "./PieChartAnimated"; 
 import "../styles/Home.css";
 
 const dummyTrends = [
-  { day: "Mon", risk: 30 },
-  { day: "Tue", risk: 45 },
-  { day: "Wed", risk: 50 },
+  { day: "Mon", risk: 20 },
+  { day: "Tue", risk: 50 },
+  { day: "Wed", risk: 40 },
   { day: "Thu", risk: 70 },
-  { day: "Fri", risk: 85 },
+  { day: "Fri", risk: 30 },
 ];
 
 const dummyTransactions = [
-  { id: 1, amount: 500, risk: "High", date: "2025-02-10" },
-  { id: 2, amount: 200, risk: "Low", date: "2025-02-11" },
-  { id: 3, amount: 800, risk: "Medium", date: "2025-02-12" },
-  { id: 4, amount: 1500, risk: "High", date: "2025-02-13" },
+  { date: "2024-02-10", risk: 80, amount: 500 },
+  { date: "2024-02-11", risk: 60, amount: 400 },
+  { date: "2024-02-12", risk: 90, amount: 700 },
 ];
 
 const Home = () => {
   const [address, setAddress] = useState("");
   const [recentSearches, setRecentSearches] = useState([]);
   const [sortOption, setSortOption] = useState("date");
-  const dispatch = useDispatch();
+
+   const dispatch = useDispatch();
   const riskData = useSelector((state) => state.risk.data);
 
   const handleSearch = () => {
@@ -75,9 +59,10 @@ const Home = () => {
       return 0;
     });
   }, [sortOption]);
-
   return (
-    <div className="home-container">
+    <div className="home-wrapper">
+      <Navbar />
+           <div className="home-container">
       {!riskData ? (
         <>
           <Typography variant="h4" className="title">
@@ -158,7 +143,10 @@ const Home = () => {
         <RiskAnalysis2 />
       )}
     </div>
+      <Footer />
+    </div>
   );
 };
 
 export default Home;
+
