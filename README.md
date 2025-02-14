@@ -45,7 +45,7 @@ This project builds with **React.js** page where users can search for an address
 ---
 
 
-![Risk Analysis Page](./assets/images/Landing.png)
+![Risk Analysis Page](src/assets/images/Landing.png)
 
 🚀 **Builded a sleek and interactive Risk Analysis Page using React.js!**
 
