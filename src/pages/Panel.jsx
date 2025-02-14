@@ -12,7 +12,7 @@ const Panel = () => {
       <section className="hero-section">
         <div className="hero-cont">
           <h1>
-            The Best <span className="salmonpink">Risk Analytic App</span>
+            The Best <span className="salmonpink">Analytic App</span>
           </h1>
           <p>
            

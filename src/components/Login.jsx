@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { setUser } from "../redux/userSlice";
 import "../styles/login.css";
 import loginImg from "../assets/images/login.svg";
 import signupImg from "../assets/images/signup.svg";
@@ -10,6 +12,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const togglePanel = () => {
     setIsSignUp(!isSignUp);
@@ -19,6 +22,7 @@ const Login = () => {
     e.preventDefault();
 
     if (email === "admin" && password === "admin@123") {
+     dispatch(setUser({email}));
       navigate("/home"); 
     } else {
       setError("Invalid credentials! Try again.");
