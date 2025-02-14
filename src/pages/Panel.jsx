@@ -6,7 +6,7 @@ import Footer from "../components/Footer";
 const Panel = () => {
   return (
     <div>
-      <Navbar /> 
+      <Navbar />
 
       {/* Hero Section */}
       <section className="hero-section">
@@ -15,7 +15,10 @@ const Panel = () => {
             The Best <span className="salmonpink">Analytic App</span>
           </h1>
           <p>
-           
+            Gain deep insights, track trends, and make data-driven decisions
+            with ease. Our powerful analytics platform helps you visualize
+            complex data, assess risks, and uncover opportunities—all in one
+            place.
           </p>
           <button>
             <a href="./pages/about.html">About Us</a>

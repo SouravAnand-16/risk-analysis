@@ -64,7 +64,8 @@ const Login = () => {
           <div className="content">
             <h3>Join Analytic Community</h3>
             <p>
-              {/* Login in to participate in coding quizzes, connect with developers, and expand your coding network. */}
+              Welcome back! Log in to access insightful analytics, track risk
+              patterns, and make informed decisions with real-time data.
             </p>
             <button className="btn transparent" onClick={togglePanel}>
               Log in
@@ -76,10 +77,12 @@ const Login = () => {
           <div className="content">
             <h3>One of us?</h3>
             <p>
-              Ready for a coding challenge? Log in to test your coding knowledge and skills.
+              Connect with data enthusiasts, share insights, and stay ahead with
+              the latest trends in analytics. Join our community to collaborate,
+              learn, and grow together!
             </p>
             <button className="btn transparent" onClick={togglePanel}>
-              Log in
+              Signup
             </button>
           </div>
           <img src={signupImg} className="image" alt="signup" />

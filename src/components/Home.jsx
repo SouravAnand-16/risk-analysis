@@ -6,7 +6,8 @@ import { Typography, TextField, Button, Card, CardContent, Select, MenuItem } fr
 import { ResponsiveContainer, LineChart, Line, XAxis, YAxis, Tooltip, BarChart, Bar, Legend } from "recharts";
 import Navbar from "./Navbar"; 
 import Footer from "./Footer"; 
-import RiskAnalysis2 from "./PieChartAnimated"; 
+// import RiskAnalysis from "./RiskAnalysis"; 
+import Test from "./Risk";
 import "../styles/Home.css";
 
 const dummyTrends = [
@@ -140,7 +141,8 @@ const Home = () => {
           </div>
         </>
       ) : (
-        <RiskAnalysis2 />
+        // <RiskAnalysis />
+        <Test />
       )}
     </div>
       <Footer />
