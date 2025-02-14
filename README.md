@@ -46,6 +46,7 @@ This project builds with **React.js** page where users can search for an address
 
 
 ![Risk Analysis Page](src/assets/images/Landing.png)
+<!-- ![Risk Analysis Page](src/assets/images/Login.png) -->
 ![Risk Analysis Page](src/assets/images/Login.png)
 ![Risk Analysis Page](src/assets/images/Home1.png)
 ![Risk Analysis Page](src/assets/images/Home2.png)
@@ -53,7 +54,7 @@ This project builds with **React.js** page where users can search for an address
 
 <table>
   <tr>
-    <td><img src="src/assets/images/Das2.png" width="400"></td>
+    <td><img src="src/assets/images/Dash2.png" width="400"></td>
     <td><img src="src/assets/images/Dash1.png" width="400"></td>
   </tr>
 </table>
