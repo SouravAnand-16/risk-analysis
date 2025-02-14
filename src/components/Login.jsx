@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setUser } from "../redux/userSlice";
-import "../styles/login.css";
+import "../styles/Login.css";
 import loginImg from "../assets/images/login.svg";
 import signupImg from "../assets/images/signup.svg";
 
